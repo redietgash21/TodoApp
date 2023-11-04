@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 
 import Axios from 'axios'
-
+import './App.css';
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
     });
   }
     useEffect(() => {
-
+  getTodoList();
     }, [])
   return (
     <div className="App">
@@ -40,12 +40,18 @@ function App() {
          <input type='text' placeholder='add todo...' onChange={(event) => { setTodoText(event.target.value)}}/>
          <button   onClick={() => { insertIntoUserNameTable(); }}>add</button>
        </div> 
-       <button onClick={() => { getTodoList(); }}>show</button>
+      
        {dispalyAll.map((show)=>(
-          <p>{show.todoText}
-            <span>Edit</span>
-            <span>Delete</span>
-          </p>))}
+          <div className='lists'>
+            <p>
+              <span className='text'>{show.todoText} </span>
+              <button className='g'>Edit</button>
+              <button className='r'>Delete</button>
+            </p>
+            
+          </div>
+         ))}
+      
     </div>
   );
 }
