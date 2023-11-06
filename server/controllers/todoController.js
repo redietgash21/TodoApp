@@ -41,3 +41,42 @@ exports.showTodos=(req,res)=>{
         }
    });
 };
+//edit to todo app table
+exports.editTodoTable = (req, res)=>{
+    const  todoText = req.body.todoText;
+    const  id = req.body.id;
+    const queryy =  `update todoTable SET  
+                     todoText='${todoText}'
+                    where id=${id}`;
+    
+
+        db.query(queryy,
+            [todoText, id], (err, result)=>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log("update");
+                
+            }
+            });
+}
+//insert to todo app table
+exports.deleteTodoList = (req, res)=>{
+    const  id = req.body.id;
+    const queryy =  `DELETE FROM todoTable where ${id}`;
+    
+
+        db.query(queryy,
+            [id], (err, result)=>{
+            if(err){
+                console.log(err);
+                console.log(queryy);
+            }
+            else{
+                console.log("delete");
+                
+            }
+            });
+}
+
