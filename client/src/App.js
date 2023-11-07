@@ -54,7 +54,7 @@ function App() {
   }
     useEffect(() => {
   getTodoList();
-    })
+    },[id])
   return (
     <div className="App">
        <div className='container'>
